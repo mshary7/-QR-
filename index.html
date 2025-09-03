@@ -298,6 +298,23 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            .chat-container {
+                height: 500px;
+                border-radius: 15px;
+                margin: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .chat-container {
+                height: 450px;
+                border-radius: 12px;
+                margin: 0 0.5rem;
+            }
+        }
+
         .chat-header {
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
@@ -453,6 +470,132 @@
             background: linear-gradient(135deg, #b3e5fc 0%, #81d4fa 100%);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(2, 119, 189, 0.3);
+        }
+
+        .suggested-btn-enhanced {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: #0369a1;
+            border: 2px solid #0ea5e9;
+            border-radius: 15px;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 0.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(14, 165, 233, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .suggested-btn-enhanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .suggested-btn-enhanced:hover::before {
+            left: 100%;
+        }
+
+        .suggested-btn-enhanced:hover {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(14, 165, 233, 0.4);
+            border-color: #0369a1;
+        }
+
+        .suggested-btn-enhanced:active {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+        }
+
+        .suggested-question-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            color: #0369a1;
+            border: 2px solid #0ea5e9;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: right;
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.15);
+            position: relative;
+            overflow: hidden;
+            min-height: 60px;
+        }
+
+        /* تحسينات للجوال */
+        @media (max-width: 768px) {
+            .suggested-question-btn {
+                padding: 1rem 1.2rem;
+                font-size: 0.95rem;
+                min-height: 55px;
+                border-radius: 15px;
+            }
+            
+            .suggested-question-btn span:first-child {
+                margin-left: 0.8rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .suggested-question-btn {
+                padding: 0.9rem 1rem;
+                font-size: 0.9rem;
+                min-height: 50px;
+                border-radius: 12px;
+            }
+            
+            .suggested-question-btn span:first-child {
+                margin-left: 0.6rem;
+                font-size: 1rem;
+            }
+        }
+
+        .suggested-question-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(14, 165, 233, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .suggested-question-btn:hover::before {
+            left: 100%;
+        }
+
+        .suggested-question-btn:hover {
+            background: linear-gradient(135deg, #0ea5e9 0%, #0369a1 100%);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+            border-color: #0369a1;
+        }
+
+        .suggested-question-btn:active {
+            transform: translateY(0px);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         }
 
         @keyframes typingDot {
@@ -1010,6 +1153,7 @@
                     <button onclick="showSection('solution')" class="btn-secondary">الحل المبتكر</button>
                     <button onclick="showSection('technology')" class="btn-secondary">التقنيات</button>
                     <button onclick="showSection('demo')" class="btn-secondary">العرض التوضيحي</button>
+                    <button onclick="window.open('https://mshary7.github.io/-QR/', '_blank')" class="btn-secondary">🔗 نموذج أولي</button>
                     <button onclick="showSection('future')" class="btn-secondary">🛠️ إضافات مستقبلية</button>
                     <button onclick="showSection('team')" class="btn-secondary">👥 الفريق</button>
                     <button onclick="showMedicalAssistant()" class="btn-primary">🤖 المساعد الطبي</button>
@@ -2575,31 +2719,55 @@
                     </div>
                 </div>
 
-                <!-- الأسئلة المقترحة -->
-                <div class="px-6 py-4 bg-gray-50 border-t">
-                    <div class="text-sm text-gray-600 mb-3">💡 أسئلة مقترحة:</div>
-                    <div class="flex flex-wrap gap-2">
-                        <button onclick="askQuestion('ما فائدة هذه الفكرة؟')" class="suggested-btn">ما فائدة هذه الفكرة؟</button>
-                        <button onclick="askQuestion('ما الهدف من هذا المشروع؟')" class="suggested-btn">ما الهدف من هذا المشروع؟</button>
-                        <button onclick="askQuestion('ماذا يفعل النظام بالضبط؟')" class="suggested-btn">ماذا يفعل النظام بالضبط؟</button>
-                        <button onclick="askQuestion('اختصر لي الفكرة')" class="suggested-btn">اختصر لي الفكرة</button>
-                        <button onclick="askQuestion('كيف ساعدت أم فاطمة؟')" class="suggested-btn">كيف ساعدت أم فاطمة؟</button>
-                    </div>
-                </div>
-
                 <!-- منطقة إدخال الرسائل -->
                 <div class="chat-input-container">
-                    <div class="flex gap-3">
-                        <input 
-                            type="text" 
-                            id="chatInput" 
-                            class="chat-input flex-1" 
-                            placeholder="اكتب سؤالك هنا..."
-                            onkeypress="handleChatKeyPress(event)"
-                        >
-                        <button onclick="sendMessage()" class="btn-primary px-6 py-3 rounded-full">
+                    <div class="flex p-4 border-t bg-gray-50">
+                        <input type="text" id="messageInput" placeholder="اكتب سؤالك هنا..." 
+                               class="flex-1 px-4 py-2 border border-gray-300 rounded-r-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                        <button onclick="sendMessage()" class="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-l-lg transition-colors duration-200 font-semibold">
                             إرسال
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- قسم الأسئلة المقترحة - منفصل تماماً -->
+            <div class="suggested-questions-section mt-8">
+                <div class="bg-white border-t-4 border-blue-500 shadow-lg rounded-lg">
+                    <div class="px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50">
+                        <div class="text-center mb-4">
+                            <h3 class="text-lg font-bold text-gray-800 mb-2 flex items-center justify-center">
+                                <span class="text-2xl ml-2">💡</span>
+                                أسئلة مقترحة
+                            </h3>
+                            <p class="text-sm text-gray-600">انقر على أي سؤال للحصول على الإجابة:</p>
+                        </div>
+                        <div class="space-y-3">
+                            <button onclick="askQuestion('ما فائدة هذه الفكرة؟')" class="suggested-question-btn">
+                                <span class="text-xl ml-3">🌟</span>
+                                <span>ما فائدة هذه الفكرة؟</span>
+                            </button>
+                            <button onclick="askQuestion('ما الهدف من هذا المشروع؟')" class="suggested-question-btn">
+                                <span class="text-xl ml-3">🎯</span>
+                                <span>ما الهدف من هذا المشروع؟</span>
+                            </button>
+                            <button onclick="askQuestion('ماذا يفعل النظام بالضبط؟')" class="suggested-question-btn">
+                                <span class="text-xl ml-3">⚙️</span>
+                                <span>ماذا يفعل النظام بالضبط؟</span>
+                            </button>
+                            <button onclick="askQuestion('اختصر لي الفكرة')" class="suggested-question-btn">
+                                <span class="text-xl ml-3">📝</span>
+                                <span>اختصر لي الفكرة</span>
+                            </button>
+                            <button onclick="askQuestion('كيف ساعدت أم فاطمة؟')" class="suggested-question-btn">
+                                <span class="text-xl ml-3">👵</span>
+                                <span>كيف ساعدت أم فاطمة؟</span>
+                            </button>
+                            <button onclick="askQuestion('كيف تعمل الساعة الذكية؟')" class="suggested-question-btn">
+                                <span class="text-xl ml-3">⌚</span>
+                                <span>كيف تعمل الساعة الذكية؟</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3049,16 +3217,32 @@
 
         // وظائف المحادثة
         function askQuestion(question) {
-            const input = document.getElementById('chatInput');
-            input.value = question;
-            sendMessage();
+            console.log('askQuestion called with:', question);
+            const input = document.getElementById('messageInput');
+            if (input) {
+                input.value = question;
+                console.log('Input value set to:', input.value);
+                sendMessage();
+            } else {
+                console.error('messageInput element not found');
+            }
         }
 
         function sendMessage() {
-            const input = document.getElementById('chatInput');
-            const message = input.value.trim();
+            console.log('sendMessage called');
+            const input = document.getElementById('messageInput');
+            if (!input) {
+                console.error('messageInput element not found in sendMessage');
+                return;
+            }
             
-            if (message === '') return;
+            const message = input.value.trim();
+            console.log('Message to send:', message);
+            
+            if (message === '') {
+                console.log('Empty message, returning');
+                return;
+            }
             
             // إضافة رسالة المستخدم
             addMessage('user', message);
@@ -3078,7 +3262,14 @@
         }
 
         function addMessage(sender, text) {
+            console.log('addMessage called with sender:', sender, 'text:', text.substring(0, 50) + '...');
             const messagesContainer = document.getElementById('chatMessages');
+            
+            if (!messagesContainer) {
+                console.error('chatMessages element not found');
+                return;
+            }
+            
             const messageDiv = document.createElement('div');
             messageDiv.className = `message ${sender}`;
             
@@ -3100,6 +3291,7 @@
             
             messagesContainer.appendChild(messageDiv);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            console.log('Message added successfully');
         }
 
         function showTypingIndicator() {
@@ -3223,7 +3415,47 @@
                             </div>
                         </div>
                         <div class="bg-amber-100 p-3 rounded-lg text-center">
-                            <p class="text-sm text-amber-800">💬 <strong>"لولا هذه الساعة لما كنت هنا اليوم"</strong> - أم فاطمة</p>
+                            <p class="text-sm text-amber-800">💬 <strong>"لولا هذه الساعة من بعد الله عز وجل لما كنت هنا اليوم"</strong> - أم فاطمة</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            if (lowerQuestion.includes('ساعة') || lowerQuestion.includes('الساعة') || lowerQuestion.includes('تعمل')) {
+                return `
+                    <div class="space-y-3">
+                        <h4 class="font-bold text-blue-600">⌚ كيف تعمل الساعة الذكية:</h4>
+                        <div class="space-y-3">
+                            <div class="bg-blue-50 p-3 rounded-lg">
+                                <h5 class="font-bold text-blue-700">📊 المستشعرات:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• مستشعر معدل ضربات القلب (24/7)</li>
+                                    <li>• مقياس ضغط الدم التلقائي</li>
+                                    <li>• مستشعر الأكسجين في الدم</li>
+                                    <li>• مراقب النوم والنشاط</li>
+                                </ul>
+                            </div>
+                            <div class="bg-green-50 p-3 rounded-lg">
+                                <h5 class="font-bold text-green-700">🤖 الذكاء الاصطناعي:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• تحليل البيانات في الوقت الفعلي</li>
+                                    <li>• اكتشاف الأنماط غير الطبيعية</li>
+                                    <li>• التنبؤ بالمشاكل الصحية</li>
+                                    <li>• إرسال تنبيهات فورية</li>
+                                </ul>
+                            </div>
+                            <div class="bg-purple-50 p-3 rounded-lg">
+                                <h5 class="font-bold text-purple-700">🔗 الاتصال:</h5>
+                                <ul class="text-sm space-y-1">
+                                    <li>• اتصال مباشر بالطبيب والمستشفى</li>
+                                    <li>• تنبيهات للأسرة عبر الجوال</li>
+                                    <li>• استدعاء الإسعاف تلقائياً</li>
+                                    <li>• مشاركة الموقع الجغرافي</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-lg text-center">
+                            <p class="text-sm text-blue-800">⚡ <strong>النتيجة:</strong> مراقبة صحية ذكية تنقذ الأرواح!</p>
                         </div>
                     </div>
                 `;
